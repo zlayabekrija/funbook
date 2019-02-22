@@ -30,6 +30,7 @@ gem 'devise'
 gem 'bootstrap', '4.1.3'
 gem 'font_awesome5_rails'
 gem 'omniauth-facebook'
+gem 'dotenv-rails', groups: [:development, :test]
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -42,6 +43,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.8'
+  gem 'faker'
 end
 
 group :development do
