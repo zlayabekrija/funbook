@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <div class="float-left sidebar">
+    <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="container w-75 float-right p-0">
     <%= yield %>
+    <footer>
+    <%= render 'layouts/footer' %>
+    </footer>
+    </div>
   </body>
 </html>

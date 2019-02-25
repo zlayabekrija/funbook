@@ -1,0 +1,26 @@
+.sidebar {
+    width: 17.52%;
+    min-height: 1080px;
+    background-color: #F5F5F5;
+    box-shadow: inset -5px -5px 25px #707070;
+    position: relative;
+}
+
+.sidebar-icons {
+    margin: auto;
+    width: 61%;
+}
+.sidebar-icons-menu {
+    width: 100%;
+}
+ul {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0;
+}
+i {
+    color: darkgray;
+}
+li {
+    margin-bottom: 1rem;
+}
