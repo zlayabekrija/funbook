@@ -11,11 +11,28 @@ class User < ApplicationRecord
           omniauth_providers: %i[facebook]
 
   validates :name, presence: true, length: { minimum: 3}
-  validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
-  validate :check_dob
+  validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, unless: -> { from_omniauth? }
+  validate :check_dob, unless: -> { from_omniauth? }
+
+
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.name = auth.info.first_name
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
 
   protected
   def check_dob
     errors.add(:dob, "can't birth in future") if dob > Date.today
+  end
+
+  private
+  def from_omniauth?
+    provider && uid
   end
 end

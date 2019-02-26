@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'bootstrap', '4.1.3'
+gem 'bootstrap', '4.3.1'
 gem 'font_awesome5_rails'
 gem 'omniauth-facebook'
 gem 'dotenv-rails', groups: [:development, :test]
@@ -66,5 +66,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# gem 'jquery-rails'
+gem 'jquery-rails'
+# gem 'bootstrap-sass'
 gem 'activestorage-validator'

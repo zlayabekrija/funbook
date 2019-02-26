@@ -10,14 +10,19 @@
   </head>
 
   <body>
-    <div class="float-left sidebar">
-    <%= render 'layouts/sidebar' %>
-    </div>
-    <div class="container w-75 float-right p-0">
+    <% if signed_in? %>
+      <div class="float-left sidebar">
+        <%= render 'layouts/sidebar' %>
+      </div>
+    <% end %>
     <%= yield %>
-    <footer>
-    <%= render 'layouts/footer' %>
-    </footer>
-    </div>
+      <% if signed_in? %>
+        <div class="container w-75 float-right p-0">
+          <%= yield %>
+          <footer>
+            <%= render 'layouts/footer' %>
+          </footer>
+        </div>
+      <% end %>
   </body>
 </html>
