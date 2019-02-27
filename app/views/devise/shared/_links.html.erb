@@ -2,7 +2,7 @@
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
     Sign up
@@ -18,10 +18,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-
+        <div class="modal-body" id="body">
+         <ul>
+         <li id="errors">text</li>
+         </ul>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name),remote: true) do |f| %>
             <div class="field">
               <%= f.label :name %><br />
               <%= f.text_field :name %>
@@ -50,7 +51,7 @@
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
             </div>
 
-            <div class="actions">
+            <div class="actions" id="sub">
               <%= f.submit "Sign up", class:"btn btn-primary" %>
             </div>
           <% end %>
@@ -62,7 +63,6 @@
 
 
 
-<% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
@@ -81,3 +81,24 @@
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end %>
 <% end %>
+<script>
+$(document).ready(function() {
+   $('#new_user')
+   .bind('ajax:success', function(evt, data, status, xhr) {
+     //function called on status: 200 (for ex.)
+     document.write('success');
+     $("#errors").append('xhr.responseText');
+     console.log('success');
+   })
+   .bind("ajax:error", function(evt, xhr, status, error) {
+     //function called on status: 401 or 500 (for ex.)
+     document.write(xhr.responseText);
+    
+     console.log('error');
+   });
+ });
+ $("#sub").on('click',function(){
+   $("#errors").append("erorr");
+ });
+ 
+</script>

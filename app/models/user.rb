@@ -28,7 +28,9 @@ class User < ApplicationRecord
 
   protected
   def check_dob
-    errors.add(:dob, "can't birth in future") if dob > Date.today
+    if dob
+      errors.add(:dob, "can't birth in future") if dob > Date.today
+    end
   end
 
   private
