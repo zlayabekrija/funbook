@@ -6,13 +6,14 @@ class User < ApplicationRecord
   has_many :reactions, through: :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
+  validates :name, presence: true, length: { minimum: 3}
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
           omniauth_providers: %i[facebook]
-
-  validates :name, presence: true, length: { minimum: 3}
-  validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, unless: -> { from_omniauth? }
+validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, unless: -> { from_omniauth? }
   validate :check_dob, unless: -> { from_omniauth? }
+  
 
 
 
@@ -29,7 +30,7 @@ class User < ApplicationRecord
   protected
   def check_dob
     if dob
-      errors.add(:dob, "can't birth in future") if dob > Date.today
+      errors.add(:dob, "can't be in future") if dob > Date.today
     end
   end
 

@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  after_action :prepare_unobtrusive_flash
   def after_sign_in_path_for(resource)
     root_path
   end

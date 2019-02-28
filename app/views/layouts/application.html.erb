@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <% if signed_in? %>
       <div class="float-left sidebar">
         <%= render 'layouts/sidebar' %>

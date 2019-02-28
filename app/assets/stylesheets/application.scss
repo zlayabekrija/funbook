@@ -67,6 +67,16 @@ legend {
   padding-top: 0;
   border-radius: 10px;
 }
+.error {
+  color: red;
+  font-size: small;
+  font-style: italic;
+  text-transform: capitalize;
+}
+input + .error {
+  border-color: red;
+}
+
 
 @media only screen and (max-width: 1300px) {
   .logo-cloud {

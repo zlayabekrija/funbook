@@ -1,0 +1,28 @@
+function my_function() {
+    let name = document.getElementById("name");
+    name.innerHTML = "<%= resource.errors['name'][0] %>";
+    let email = document.getElementById("email");
+    email.innerHTML = "<%= resource.errors['email'][0] %>";
+    let dob = document.getElementById("dob");
+    dob.innerHTML = "<%= resource.errors['dob'][0] %>";
+     let password = document.getElementById("password");
+    password.innerHTML = "<%= resource.errors['password'][0] %>";
+    let password_confirmation = document.getElementById("password_confirmation");
+    password_confirmation.innerHTML = "<%= resource.errors['password_confirmation'][0] %>";
+   
+   
+}
+my_function();
+/*
+<% resource.errors.messages.each do |error| %>
+    <% if error[0] == 0 %>
+    <% next %>
+    <% else  %>
+    if (document.getElementById("<%= error[0] %>").innerHTML !== undefined){
+    document.getElementById("<%= error[0] %>").innerHTML = "<%= error[1][0] %>";
+    }else{
+         document.getElementById("<%= error[0] %>").innerHTML = undefined;
+    }
+    <% end %>
+   <% end %>
+   */

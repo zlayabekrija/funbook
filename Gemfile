@@ -26,7 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-gem 'unobtrusive_flash', '>=3'
 gem 'bootstrap', '4.3.1'
 gem 'font_awesome5_rails'
 gem 'omniauth-facebook'
