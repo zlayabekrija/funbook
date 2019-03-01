@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'friends/new'
+  get 'reactions/new'
+  get 'comments/new'
+  # get 'posts/new'
+  get 'timeline', to: "posts#new"
+  resource :posts
   get 'main/home'
   # devise_for :users
   root "main#home"

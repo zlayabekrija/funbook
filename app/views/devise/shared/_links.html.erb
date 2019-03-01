@@ -27,6 +27,11 @@
             </div>
 
             <div class="field">
+              <%= f.file_field :profile_pic %>
+
+            </div>
+
+            <div class="field">
               <%= f.label :email %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
               <p id="email" class="error"></p>

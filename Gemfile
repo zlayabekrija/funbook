@@ -69,3 +69,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 # gem 'bootstrap-sass'
 gem 'activestorage-validator'
+gem "aws-sdk-s3", require: false
+gem 'mini_magick', '~> 4.8'

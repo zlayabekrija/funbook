@@ -10,22 +10,24 @@
   </head>
 
   <body>
-    <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
+    <%# flash.each do |message_type, message| %>
+<!--        <div class="alert alert-<%#= message_type %>"><%#= message %></div>-->
+    <%# end %>
     <% if signed_in? %>
       <div class="float-left sidebar">
         <%= render 'layouts/sidebar' %>
       </div>
     <% end %>
-    <%= yield %>
+    <%= yield if !signed_in? %>
       <% if signed_in? %>
         <div class="container w-75 float-right p-0">
           <%= yield %>
+          <%= image_tag current_user.profile_pic %>
           <footer>
             <%= render 'layouts/footer' %>
           </footer>
         </div>
+  <div class="clearfix"></div>
       <% end %>
   </body>
 </html>

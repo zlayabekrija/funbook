@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :profile_pic
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts, dependent: :destroy
   has_many :friends, dependent: :destroy # to do
@@ -11,7 +12,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
           omniauth_providers: %i[facebook]
-validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, unless: -> { from_omniauth? }
+  validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, unless: -> { from_omniauth? }
   validate :check_dob, unless: -> { from_omniauth? }
   
 
