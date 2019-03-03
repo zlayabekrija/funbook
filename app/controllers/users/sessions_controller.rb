@@ -8,6 +8,15 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
+
+  def root
+    if signed_in?
+      redirect_to timeline_path
+    else
+      redirect_to  new_user_session_path
+    end
+  end
+
   # POST /resource/sign_in
   def create
     super

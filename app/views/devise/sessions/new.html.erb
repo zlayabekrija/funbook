@@ -1,34 +1,34 @@
-<%= image_tag 'logo.png', class:'logo' %>
+<%= image_tag 'logo.png', class: 'logo' %>
 
-<%= image_tag 'logincloud.png', class:'logo-cloud' %>
+<%= image_tag 'logincloud.png', class: 'logo-cloud' %>
 
 <div class="box text-center">
-  <%= image_tag 'logintrees.png', class:'logo-trees my-3' %>
+  <%= image_tag 'logintrees.png', class: 'logo-trees my-3' %>
 
   <h3 class="my-3">Sign in to Continue</h3>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field form-group text-left">
       <%= field_set_tag 'Email' do %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control border-0" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0" %>
       <% end %>
     </div>
 
     <div class="field form-group text-left">
       <%= field_set_tag 'Password' do %>
-      <%= f.password_field :password, autocomplete: "current-password", class:"form-control border-0" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control border-0" %>
       <% end %>
     </div>
 
     <% if devise_mapping.rememberable? %>
       <div class="field text-left">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me, "Keep me logged in", style:"font-weight:100;" %>
+        <%= f.label :remember_me, "Keep me logged in", style: "font-weight:100;" %>
       </div>
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class:"btn btn-block btn-primary" %>
+      <%= f.submit "Log in", class: "btn btn-block btn-primary" %>
     </div>
   <% end %>
   <%= render "devise/shared/links" %>

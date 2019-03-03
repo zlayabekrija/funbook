@@ -3,15 +3,18 @@ Rails.application.routes.draw do
   get 'reactions/new'
   get 'comments/new'
   # get 'posts/new'
-  get 'timeline', to: "posts#new"
-  resource :posts
+  get 'timeline', to: 'posts#timeline'
+  post 'timeline', to: 'posts#create'
+  resources :posts
   get 'main/home'
-  # devise_for :users
-  root "main#home"
+  devise_scope :user do
+    root to: "users/sessions#root"
+  end
   devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations',
-      omniauth_callbacks: 'callbacks'
+      omniauth_callbacks: 'callbacks',
+
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

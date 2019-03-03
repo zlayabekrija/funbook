@@ -1,7 +1,23 @@
-<%= form_with(model: post) do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+<div class="jumbotron py-4 mr-3 mt-3">
+  <%= form_with(model: post, local: true) do |f| %>
+    <%#= f.label :content %>
+    <div class="d-flex align-items-center">
+      <% if !current_user.profile_pic.attached? %>
+        <div class="profile-image d-inline"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+        <div class="profile-image d-inline"><%= image_tag current_user.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+      <%= f.text_area :content, style: "width: 100%;height: 60px; border:0;", class: "mx-3 remove-focus" %>
+    </div>
+      <div class="custom-file w-50 mt-2 d-inline-block" style="margin-left: 55px">
+        <%= f.file_field :post_pic, multiple: true, class: "custom-file-input", id: "customFile" %>
+        <label class="custom-file-label" for="customFile">Upload one or multiple images</label>
+      </div>
+      <%= f.submit "Post", style: "display: inline-block", class: "btn btn-primary float-right mt-2 mr-3 px-5" %>
 
-  <%= f.file_field :post_pic %>
-  <%= f.submit "Post" %>
-<% end %>
+
+    <div class="clearfix"></div>
+
+  <% end %>
+</div>
+

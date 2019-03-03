@@ -20,46 +20,92 @@
         </div>
         <div class="modal-body" id="body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name),remote: true) do |f| %>
-            <div class="field">
-              <%= f.label :name %>
-              <%= f.text_field :name %>
+<!--            <div class="field">-->
+              <%#= f.label :name %>
+              <%#= f.text_field :name %>
+<!--              <p id="name" class="error"></p>-->
+<!--            </div>-->
+
+            <div class="field form-group text-left">
+              <%= field_set_tag 'Name*' do %>
+                <%= f.text_field :name, class: "form-control border-0" %>
+              <% end %>
               <p id="name" class="error"></p>
             </div>
 
-            <div class="field">
-              <%= f.file_field :profile_pic %>
+<!--            <div class="field">-->
+              <%#= f.file_field :profile_pic, class:"custom-file-input", id:"inputGroupFile01" %>
+<!--            </div>-->
 
+            <div class="input-group">
+              <div class="custom-file">
+                <%= f.file_field :profile_pic, class:"custom-file-input", id:"inputGroupFile01" %>
+                <label class="custom-file-label" for="inputGroupFile01">Upload your Profile Picture</label>
+              </div>
             </div>
 
-            <div class="field">
-              <%= f.label :email %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--            <div class="field">-->
+              <%#= f.label :email %>
+              <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--              <p id="email" class="error"></p>-->
+<!--            </div>-->
+
+            <div class="field form-group text-left">
+              <%= field_set_tag 'Email*' do %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0" %>
+              <% end %>
               <p id="email" class="error"></p>
             </div>
 
-            <div class="field">
-              <%= f.label :dob %>
-              <%= f.date_field :dob %>
-               <p id="dob" class="error"></p>
-            </div>
+<!--            <div class="field">-->
+              <%#= f.label :dob %>
+              <%#= f.date_field :dob %>
+<!--               <p id="dob" class="error"></p>-->
+<!--            </div>-->
 
-            <div class="field">
-              <%= f.label :password %>
-              <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <div class="field form-group text-left">
+              <%= field_set_tag 'Birth*' do %>
+                <%= f.date_field :dob, class: "form-control border-0" %>
               <% end %>
-              <%= f.password_field :password, autocomplete: "new-password" %>
-               <p id="password" class="error"></p>
+              <p id="dob" class="error"></p>
             </div>
 
-            <div class="field">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-               <p id="password_confirmation" class="error"></p>
+<!--            <div class="field">-->
+              <%#= f.label :password %>
+              <%# if @minimum_password_length %>
+<!--                <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
+              <%# end %>
+              <%#= f.password_field :password, autocomplete: "new-password" %>
+<!--               <p id="password" class="error"></p>-->
+<!--            </div>-->
+
+            <div class="field form-group text-left">
+              <%= field_set_tag 'Password*' do %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-0" %>
+              <% end %>
+              <p id="password" class="error"></p>
             </div>
+
+<!--            <div class="field">-->
+              <%#= f.label :password_confirmation %>
+              <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+<!--               <p id="password_confirmation" class="error"></p>-->
+<!--            </div>-->
+
+            <div class="field form-group text-left">
+              <%= field_set_tag 'Confirm*' do %>
+                <%= f.password_field :password, class: "form-control border-0" %>
+              <% end %>
+              <p id="password_confirmation" class="error"></p>
+            </div>
+
+
 
             <div class="actions" id="sub">
-              <%= f.submit "Sign up", class:"btn btn-primary" %>
+              <%= f.submit "Sign up", class:"btn btn-primary btn-block" %>
             </div>
           <% end %>
         </div>

@@ -1,23 +1,28 @@
 <div class="main-sidebar">
-<div class="sidebar-icons mt-3">
-<%= image_tag 'logo.png' %>
-<div class="sidebar-icons-menu mt-2">
-<h4><strong>Menu</strong></h4>
-<ul>
-<li><%= image_tag 'noun_Newspaper_772219 (1).png'%> News</li>
-<li><%= image_tag 'noun_message_2043227@2x.png'%> Messages <span class="badge badge-pill badge-danger">8</span></li>
-<li><%= image_tag 'noun_friends_1297819@2x.png'%> Friends</li>
-<li><%= image_tag 'noun_event_1379383@2x.png'%> Events</li>
-<li><%= image_tag 'Group 1119@2x.png'%> Communities</li>
-<li><%= image_tag 'noun_pages_734946@2x.png'%> Pages</li>
-<li><%= image_tag 'noun_Box_1276334@2x.png'%> Apps</li>
-</ul>
-<h4><strong>Shortcuts</strong></h4>
-<ul>
-<li><%= image_tag 'Google__G__Logo@2x.png'%>Google Inc.</li>
-<li><%= image_tag 'Y_Combinator_logo@2x.png'%>Y Combinator</li>
-<li><%= image_tag 'Amazon.com_A_Smile@2x.png'%>Amazon</li>
-</ul>
-</div>
-</div>
+  <div class="sidebar-icons mt-3">
+    <%= image_tag 'logo.png', class: "logo-f" %>
+    <div class="sidebar-icons-menu mt-2">
+      <div class="menu">
+        <h6><strong class="text-color">Menu</strong></h6>
+        <ul class="side-menu">
+          <li class="text-color"><%= image_tag 'noun_Newspaper_772219 (1).png', class: "icon"%> News</li>
+          <li class="text-color"><%= image_tag 'noun_message_2043227@2x.png', class: "icon"%> Messages <span class="badge badge-pill badge-danger float-right">8</span></li>
+          <li class="text-color"><%= image_tag 'noun_friends_1297819@2x.png', class: "icon"%> Friends</li>
+          <li class="text-color"><%= image_tag 'noun_event_1379383@2x.png', class: "icon"%> Events</li>
+          <li class="text-color"><%= image_tag 'Group 1119@2x.png', class: "icon"%> Communities</li>
+          <li class="text-color"><%= image_tag 'noun_pages_734946@2x.png', class: "icon"%> Pages</li>
+          <li class="text-color"><%= image_tag 'noun_Box_1276334@2x.png', class: "icon"%> Apps</li>
+        </ul>
+      </div>
+      <div class="shortcuts mt-1">
+        <h6><strong class="text-color">Shortcuts</strong></h6>
+        <ul class="side-menu">
+          <li class="text-color"><%= image_tag 'Google__G__Logo@2x.png', class: "icon"%>Google Inc.</li>
+          <li class="text-color"><%= image_tag 'Y_Combinator_logo@2x.png', class: "icon"%>Y Combinator</li>
+          <li class="text-color"><%= image_tag 'Amazon.com_A_Smile@2x.png', class: "icon"%>Amazon</li>
+        </ul>
+      </div>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </div>
+  </div>
 </div>

@@ -71,3 +71,4 @@ gem 'jquery-rails'
 gem 'activestorage-validator'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.2'

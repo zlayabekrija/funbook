@@ -77,6 +77,10 @@ input + .error {
   border-color: red;
 }
 
+.custom-file-label {
+  color: #5477bc !important;
+  text-align: left;
+}
 
 @media only screen and (max-width: 1300px) {
   .logo-cloud {

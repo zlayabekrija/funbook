@@ -1,0 +1,9 @@
+<% @posts.each do |p| %>
+  <div class="jumbotron">
+
+    <%= p.content %>
+    <% p.post_pic.each do |y| %>
+      <%= image_tag y.variant(resize: "100x100!") %>
+    <% end %>
+  </div>
+<% end %>

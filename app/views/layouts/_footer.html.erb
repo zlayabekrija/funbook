@@ -1,59 +1,63 @@
-<div class="float-left px-2 w-25">
-    <div class="w-50 float-left">
-    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png',class:'m-auto'%></div>
-    </div>
-    <div class="w-50 float-right">
-    <p class="text-white m-0 mt-1">User name</p>
-    <small class="text-secondary">Some status....</small>
-    </div>
-    <div class="clearfix"></div>
+<div class="float-left px-2 w-25 alignment">
+  <div class="w-30 float-left">
+    <% if !current_user.profile_pic.attached? %>
+    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+    <div class="d-flex footer-profile-image"><%= image_tag current_user.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+  </div>
+  <div class="w-80 float-right pl-2">
+    <p class="text-white m-0 mt-1"><%= current_user.name.capitalize %> </p>
+    <small class="tagline">No status....</small>
+  </div>
+  <div class="clearfix"></div>
 </div>
-<div class="w-75 text-center float-left footer-central">
-    <div class="w-50 float-left">
-         <div class="dropdown">
-  <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
-   <%= image_tag 'Path 85',class: "dropdown-toggle",data_toggle: "dropdown" %>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
-  </div>
-  <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
-   <%= image_tag 'Group 958',class: "dropdown-toggle",data_toggle: "dropdown" %>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
-  </div>
-  <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
-   <%= image_tag 'Path 90',class: "dropdown-toggle",data_toggle: "dropdown" %>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
-  </div>
-  <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
-   <%= image_tag 'Path 83',class: "dropdown-toggle",data_toggle: "dropdown" %>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
-  </div>
-  <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
-   <%= image_tag 'Group 45',class: "dropdown-toggle",data_toggle: "dropdown" %>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Link 1</a>
-    <a class="dropdown-item" href="#">Link 2</a>
-    <a class="dropdown-item" href="#">Link 3</a>
-  </div>
-</div> 
+<div class="w-75 text-center float-left footer-central alignment">
+  <div class="w-50 float-left">
+    <div class="dropdown">
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Path 85', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Group 958', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Path 90', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Path 83', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Group 45', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
     </div>
-    <div class="w-50 float-left">
-        <p>Text</p>
-    </div>
+  </div>
+  <div class="w-50 float-left">
+    <p>Text</p>
+  </div>
 </div>
