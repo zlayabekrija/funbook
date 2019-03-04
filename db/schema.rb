@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_101649) do
+ActiveRecord::Schema.define(version: 2019_03_04_115458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_101649) do
   end
 
   create_table "friends", force: :cascade do |t|
-    t.boolean "friends"
+    t.boolean "friends", default: false
     t.bigint "user_id"
     t.integer "friend_uid"
     t.datetime "created_at", null: false

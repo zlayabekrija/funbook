@@ -5,9 +5,9 @@
       <div class="menu">
         <h6><strong class="text-color">Menu</strong></h6>
         <ul class="side-menu">
-          <li class="text-color"><%= image_tag 'noun_Newspaper_772219 (1).png', class: "icon"%> News</li>
+          <li class="text-color"><%= link_to timeline_path do %><%= image_tag 'noun_Newspaper_772219 (1).png', class: "icon"%> News<% end %></li>
           <li class="text-color"><%= image_tag 'noun_message_2043227@2x.png', class: "icon"%> Messages <span class="badge badge-pill badge-danger float-right">8</span></li>
-          <li class="text-color"><%= image_tag 'noun_friends_1297819@2x.png', class: "icon"%> Friends</li>
+          <li class="text-color"><%= link_to friends_path do %><%= image_tag 'noun_friends_1297819@2x.png', class: "icon"%>Friends<% end %></li>
           <li class="text-color"><%= image_tag 'noun_event_1379383@2x.png', class: "icon"%> Events</li>
           <li class="text-color"><%= image_tag 'Group 1119@2x.png', class: "icon"%> Communities</li>
           <li class="text-color"><%= image_tag 'noun_pages_734946@2x.png', class: "icon"%> Pages</li>

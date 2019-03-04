@@ -16,7 +16,21 @@ class User < ApplicationRecord
   validate :check_dob, unless: -> { from_omniauth? }
   
 
+  def self.myfriends(friendslist)
+    User.where(id: friendslist.collect(&:friend_uid))
+  end
 
+  def self.requestaccepted(friend)
+    User.where(id: friend.collect(&:user_id))
+  end
+  
+  def self.pending(user)
+    User.where(id: user.collect(&:user_id))
+  end
+  
+  def self.others(others_users,current_user)
+    User.where.not(id: others_users.collect(&:friend_uid)).where.not(id: current_user.id)
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

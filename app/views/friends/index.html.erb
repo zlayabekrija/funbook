@@ -1,0 +1,51 @@
+<h4>Your friends </h4>
+<% @friends.each do |friend| %>
+   <% if !friend.profile_pic.attached? %>
+    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+      <%= friend.name %>
+      <%= link_to 'Unfriend',friend_path(friend),method: :delete %>
+<% end %>
+<% @accepted.each do |friend| %>
+   <% if !friend.profile_pic.attached? %>
+    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+      <%= friend.name %>
+      <%= link_to 'Unfriend',friend_path(friend),method: :delete %>
+<% end %>
+<% if @pending.any? %>
+<h4> Pending requests </h4>
+<% @pending.each do |friend| %>
+   <% if !friend.profile_pic.attached? %>
+    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+      <%= friend.name %>
+       <%= link_to 'Accept',friend_path(friend),method: :patch %>
+        <%= link_to 'Cancel',friend_path(friend),method: :delete %>
+      <% end %>
+<% end %>
+<h4> Other Users </h4>
+<% @cancelrequest.each do |friend| %>
+   <% if !friend.profile_pic.attached? %>
+    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+      <%= friend.name %>
+     <%= link_to 'Cancel',friend_path(friend),method: :delete %>
+<% end %>
+<% @others.each do |friend| %>
+   <% if !friend.profile_pic.attached? %>
+    <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
+      <% else %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+      <%= friend.name %>
+     <%= render partial: 'new', locals: { friend: @friend,user:friend } %>
+<% end %>

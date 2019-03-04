@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'timeline', to: 'posts#timeline'
   post 'timeline', to: 'posts#create'
   resources :posts
+  resources :friends
   get 'main/home'
   devise_scope :user do
     root to: "users/sessions#root"
