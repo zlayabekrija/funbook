@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # get 'posts/new'
   get 'timeline', to: 'posts#timeline'
   post 'timeline', to: 'posts#create'
+  post 'like', to: 'reactions#create'
   resources :posts
   resources :friends
   get 'main/home'

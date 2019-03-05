@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include PostsHelper
+  include ReactionsHelper
 
   def resource_name
     :user

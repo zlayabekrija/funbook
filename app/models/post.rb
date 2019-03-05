@@ -6,10 +6,6 @@ class Post < ApplicationRecord
   validates :content, length: {maximum: 120}
   validate :check_for_presence
 
-  def thumbnail
-    return self.image.variant(resize: '300x300')
-  end
-
   protected
 
   def check_for_presence

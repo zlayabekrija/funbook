@@ -2,7 +2,8 @@ class FriendsController < ApplicationController
   def new
     @friend = current_user.friends.new
   end
-  def index 
+
+  def index
     friends = Friend.friendslist(current_user)
     @friends = User.myfriends(friends)
     pending = Friend.pendingfriendslist(current_user)
