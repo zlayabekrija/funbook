@@ -10,7 +10,8 @@ class FriendsController < ApplicationController
     @pending = User.pending(pending)
     accepted = Friend.requestaccepted(current_user)
     @accepted = User.requestaccepted(accepted)
-    @others = User.others(current_user.friends.all,current_user)
+    others = Friend.otherfriends(current_user)
+    @others = User.others(others,current_user)
     cancelrequest = Friend.cancelrequest(current_user)
     @cancelrequest = User.myfriends(cancelrequest)
   end

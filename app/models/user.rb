@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
   
   def self.others(others_users,current_user)
-    User.where.not(id: others_users.collect(&:friend_uid)).where.not(id: current_user.id)
+    User.where.not(id: others_users.collect(&:friend_uid)).where.not(id: current_user.id).where.not(id: others_users.collect(&:user_id))
   end
 
   def self.from_omniauth(auth)
