@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'friends/new'
   get 'reactions/new'
   get 'comments/new'
@@ -6,8 +7,10 @@ Rails.application.routes.draw do
   get 'timeline', to: 'posts#timeline'
   post 'timeline', to: 'posts#create'
   post 'like', to: 'reactions#create'
+  resources :comments
   resources :posts
   resources :friends
+  resources :users
   get 'main/home'
   devise_scope :user do
     root to: "users/sessions#root"

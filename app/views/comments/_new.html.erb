@@ -1,0 +1,6 @@
+<%= form_with(model: post_id.comments.build, url: comments_path) do |c| %>
+  <%= c.hidden_field :user_id, value: current_user.id %>
+  <%= c.hidden_field :post_id, value: post_id.id %>
+  <%= c.text_area :content %>
+  <%= c.submit %>
+<% end %>

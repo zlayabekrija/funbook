@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_115458) do
+ActiveRecord::Schema.define(version: 2019_03_06_101538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,15 +65,14 @@ ActiveRecord::Schema.define(version: 2019_03_04_115458) do
   end
 
   create_table "reactions", force: :cascade do |t|
-    t.bigint "post_id"
     t.bigint "user_id"
-    t.bigint "comment_id"
     t.boolean "like"
     t.boolean "dislike"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_reactions_on_comment_id"
-    t.index ["post_id"], name: "index_reactions_on_post_id"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_reactions_on_resource_type_and_resource_id"
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
@@ -98,7 +97,5 @@ ActiveRecord::Schema.define(version: 2019_03_04_115458) do
   add_foreign_key "comments", "users"
   add_foreign_key "friends", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "reactions", "comments"
-  add_foreign_key "reactions", "posts"
   add_foreign_key "reactions", "users"
 end
