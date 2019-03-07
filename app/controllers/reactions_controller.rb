@@ -8,7 +8,7 @@ class ReactionsController < ApplicationController
 
   def create
     Reaction.create(params_reactions)
-    redirect_to timeline_path
+    stay_on_same_path
   end
 
   private
@@ -23,10 +23,10 @@ class ReactionsController < ApplicationController
 
     if params[:reaction][:dislike] && like.present?
       like.update_attributes(like: nil,dislike: true)
-      redirect_to timeline_path
+      stay_on_same_path
     elsif like.present?
       like.destroy
-      redirect_to timeline_path
+      stay_on_same_path
     end
   end
 
@@ -37,10 +37,20 @@ class ReactionsController < ApplicationController
 
     if params[:reaction][:like] && dislike.present?
       dislike.update_attributes(dislike: nil,like: true)
-      redirect_to timeline_path
+      stay_on_same_path
     elsif dislike.present?
         dislike.destroy
+        stay_on_same_path
+    end
+  end
+
+  def stay_on_same_path
+    prev = Rails.application.routes.recognize_path(request.referrer)
+    if prev[:controller] == "posts"
         redirect_to timeline_path
+    else
+      session[:return_to] ||= request.referer
+      redirect_to session.delete(:return_to)
     end
   end
 

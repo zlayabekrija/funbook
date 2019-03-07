@@ -25,7 +25,8 @@ class User < ApplicationRecord
   end
   
   def self.pending(user)
-    User.where(id: user.collect(&:user_id))
+    a = user.collect(&:user_id)
+    User.where(id: a).order("position(id::text in '#{a.join(',')}')")
   end
   
   def self.others(others_users,current_user)

@@ -2,6 +2,7 @@ module ApplicationHelper
   include PostsHelper
   include ReactionsHelper
   include CommentsHelper
+  include FriendsHelper
 
   def resource_name
     :user

@@ -6,4 +6,6 @@ module ReactionsHelper
   def dislikes_counter(resource)
     resource.reactions.where(dislike: true).count
   end
+  
+ 
 end

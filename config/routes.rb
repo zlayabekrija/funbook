@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_scope :user do
+    root to: "users/sessions#root"
+  end
   get 'users/show'
   get 'friends/new'
   get 'reactions/new'
@@ -10,16 +13,15 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts
   resources :friends
-  resources :users
   get 'main/home'
-  devise_scope :user do
-    root to: "users/sessions#root"
-  end
+ 
   devise_for :users, controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations',
       omniauth_callbacks: 'callbacks',
 
   }
+  resources :users
+  #match '*path', to:'users/sessions#root', via: :all
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

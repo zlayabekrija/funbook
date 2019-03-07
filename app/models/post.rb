@@ -13,6 +13,10 @@ class Post < ApplicationRecord
   def self.friendsByMePosts friends
     Post.where(user_id: friends.collect(&:friend_uid))
   end
+  
+  def self.myPosts user 
+    Post.where(user_id: user.id)
+  end
 
   protected
 

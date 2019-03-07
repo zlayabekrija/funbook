@@ -1,0 +1,11 @@
+<%= form_for(@user) do |user| %>
+    <%= user.text_field :name,id:'update_name' %><br/>
+    <%= user.email_field :email %><br/>
+    <%= user.date_field :dob %><br/>
+    <%= user.file_field :profile_pic %><br/>
+    <%= image_tag @user.profile_pic,style:'width:5%; border-radius:50%' %><br/>
+    <%= user.password_field :password %>
+    <%= user.password_field :password_confirmation %>
+    <%= user.submit %>
+<% end %>
+<%= link_to 'Back',user_path(@user) %>

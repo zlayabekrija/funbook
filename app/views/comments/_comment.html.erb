@@ -1,7 +1,9 @@
 <%= to_show_user_data(comment).name %>
 <%#= image_tag to_show_user_data(comment).profile_pic %>
 <%= comment.content %>
+<% if comment_owner?(comment) %>
 <%= link_to 'delete', comment_path(comment), method: :delete %>
+<% end %>
 <%= render 'reactions/comment_like', comment: comment %>
 <%= likes_counter(comment) %>
 <%= dislikes_counter(comment) %>

@@ -12,6 +12,7 @@
     </small>
     <br>
     <%= p.content %>
+    <%= link_to 'Delete post',post_path(p),method: :delete %>
     <br>
     <% p.post_pic.each do |y| %>
       <%= image_tag y.variant(resize: "100x100!") %>

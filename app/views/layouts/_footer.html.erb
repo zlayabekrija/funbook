@@ -1,13 +1,15 @@
 <div class="float-left px-2 w-25 alignment">
   <div class="w-30 float-left">
+    <%= link_to user_path(current_user) do %>
     <% if !current_user.profile_pic.attached? %>
     <div class="d-flex footer-profile-image"><%= image_tag '34662a48c353c21fc714c9102c50b908@2x.png', class: 'm-auto' %></div>
       <% else %>
     <div class="d-flex footer-profile-image"><%= image_tag current_user.profile_pic, class: 'm-auto' %></div>
       <% end %>
+      <% end %>
   </div>
   <div class="w-80 float-right pl-2">
-    <p class="text-white m-0 mt-1"><%= current_user.name.capitalize %> </p>
+    <p class="text-white m-0 mt-1"><%= link_to current_user.name.capitalize,user_path(current_user) %> </p>
     <small class="tagline">No status....</small>
   </div>
   <div class="clearfix"></div>
@@ -17,11 +19,15 @@
     <div class="dropdown">
       <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
         <%= image_tag 'Path 85', class: "dropdown-toggle", data_toggle: "dropdown" %>
+         <span class="badge badge-pill badge-danger float-right"><%= notifications_count if notifications_count > 0 %></span>
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+        <% notification_user.each do |friend| %>
+        <h5><%= friend.name.capitalize %> sent friend request </h5>
+        <small><%=distance_of_time_in_words(Time.now,notification_time(friend)) %> ago</small>
+         <%= link_to 'Accept',friend_path(friend),method: :patch %>
+        <%= link_to 'Cancel',friend_path(friend),method: :delete %>
+        <% end %>
       </div>
       <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
         <%= image_tag 'Group 958', class: "dropdown-toggle", data_toggle: "dropdown" %>
