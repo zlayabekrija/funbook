@@ -39,10 +39,16 @@
 
             <div class="input-group">
               <div class="custom-file">
-                <%= f.file_field :profile_pic, class:"custom-file-input", id:"inputGroupFile01" %>
+                <%= f.file_field :profile_pic, class:"file custom-file-input", id:"inputGroupFile01" %>
                 <label class="custom-file-label" for="inputGroupFile01">Upload your Profile Picture</label>
               </div>
             </div>
+             <div class="custom-file w-50 mt-2 d-inline-block" >
+            <div class="upload-preview">
+            <img style="width:100px;margin-top:50px" />
+              </div>
+              </div>
+
 
 <!--            <div class="field">-->
               <%#= f.label :email %>
@@ -69,6 +75,19 @@
               <% end %>
               <p id="dob" class="error"></p>
             </div>
+           
+         <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+  <label class="form-check-label" for="exampleRadios2">
+    Second default radio
+  </label>
+</div>
 
 <!--            <div class="field">-->
               <%#= f.label :password %>
@@ -134,3 +153,21 @@
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %>
   <% end %>
 <% end %>
+<script>
+$(document).ready(function(){
+    var preview = $(".upload-preview img");
+
+    $(".file").change(function(event){
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           preview.attr("src", image_base64);
+       };
+      
+       reader.readAsDataURL(file);
+       
+    });
+});
+</script>

@@ -21,7 +21,7 @@ class Post < ApplicationRecord
   protected
 
   def check_for_presence
-    if !image && content.empty?
+    if self.post_pic.empty? && content.empty?
       errors.add(:image, :content, message: "should have image or text at least")
     end
   end

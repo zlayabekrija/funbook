@@ -15,11 +15,10 @@
         </ul>
       </div>
       <div class="shortcuts mt-1">
-        <h6><strong class="text-color">Shortcuts</strong></h6>
+        <h6><strong class="text-color">Authors</strong></h6>
         <ul class="side-menu">
-          <li class="text-color"><%= image_tag 'Google__G__Logo@2x.png', class: "icon"%>Google Inc.</li>
-          <li class="text-color"><%= image_tag 'Y_Combinator_logo@2x.png', class: "icon"%>Y Combinator</li>
-          <li class="text-color"><%= image_tag 'Amazon.com_A_Smile@2x.png', class: "icon"%>Amazon</li>
+          <li class="text-color"><%= image_tag 'octocat.png',class:'sidebar-icon' %><%= link_to 'Inzi',"https://github.com/inhaq",target:"_blank",style:"font-weight:500" %></li>
+          <li class="text-color"><%= image_tag 'octocat.png',class:'sidebar-icon' %><%= link_to 'Zlaya',"https://github.com/zlayabekrija",target:"_blank",style:"font-weight:500" %></li>
         </ul>
       </div>
       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>

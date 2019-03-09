@@ -4,8 +4,11 @@
     <%= user.date_field :dob %><br/>
     <%= user.file_field :profile_pic %><br/>
     <%= image_tag @user.profile_pic,style:'width:5%; border-radius:50%' %><br/>
+    <%= user.label :current_password %>
+    <%= user.password_field :current_password %>
+    <p>New Password</p>
     <%= user.password_field :password %>
-    <%= user.password_field :password_confirmation %>
+      <%= user.password_field :password_confirmation %>
     <%= user.submit %>
 <% end %>
 <%= link_to 'Back',user_path(@user) %>

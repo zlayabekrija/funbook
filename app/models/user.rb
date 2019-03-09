@@ -8,14 +8,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
   validates :name, presence: true, length: { minimum: 3}
-  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
           omniauth_providers: %i[facebook]
   validates :dob, presence: true, format: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, unless: -> { from_omniauth? }
   validate :check_dob, unless: -> { from_omniauth? }
+  validate :default_image
   
-
   def self.myfriends(friendslist)
     User.where(id: friendslist.collect(&:friend_uid))
   end
@@ -54,4 +53,15 @@ class User < ApplicationRecord
   def from_omniauth?
     provider && uid
   end
+
+  def default_image
+    if !self.profile_pic.attached?
+      if self.gender == 'male'
+      self.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "male.png")), filename: 'male.png' , content_type: "image/jpg")
+      else
+        self.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "female.png")), filename: 'female.png' , content_type: "image/jpg")
+      end
+    end
+  end
+
 end

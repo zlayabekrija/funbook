@@ -1,5 +1,5 @@
 <%= to_show_user_data(comment).name %>
-<%#= image_tag to_show_user_data(comment).profile_pic %>
+<%= image_tag to_show_user_data(comment).profile_pic.variant(resize: "100x100!") %>
 <%= comment.content %>
 <% if comment_owner?(comment) %>
 <%= link_to 'delete', comment_path(comment), method: :delete %>
