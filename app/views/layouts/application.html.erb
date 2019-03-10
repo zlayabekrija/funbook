@@ -14,20 +14,24 @@
 <!--        <div class="alert alert-<%#= message_type %>"><%#= message %></div>-->
 <%# end %>
 <% if signed_in? %>
-  <div class="float-left sidebar">
+  <div class="sidebar">
     <%= render 'layouts/sidebar' %>
   </div>
 <% end %>
 <%= yield if !signed_in? %>
 <% if signed_in? %>
-  <div class="container-fluid float-right p-0" style="max-width: calc(100% - 260px); margin-left: 280px; min-width: calc(100% - 360px);">
-    <%= yield %>
+  <div class="container-fluid clearfix p-0 mb-5" style="margin-left: 260px;width:calc(100% - 260px);">
+    <div class="mid-portion">
+      <%= yield %>
+    </div>
+    <div class="stories">
+
+    </div>
     <%#= image_tag current_user.profile_pic %>
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
   </div>
-  <div class="clearfix"></div>
 <% end %>
 </body>
 </html>

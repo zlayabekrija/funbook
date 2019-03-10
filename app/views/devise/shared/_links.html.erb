@@ -3,134 +3,131 @@
 <% end %>
 
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
-    Sign up
-  </button>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+  Sign up
+</button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Sign up</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" id="body">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name),remote: true) do |f| %>
-<!--            <div class="field">-->
-              <%#= f.label :name %>
-              <%#= f.text_field :name %>
-<!--              <p id="name" class="error"></p>-->
-<!--            </div>-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!--        <div class="modal-header">-->
+      <!--          <h5 class="modal-title" id="exampleModalCenterTitle">Sign up</h5>-->
+      <!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+      <!--            <span aria-hidden="true">&times;</span>-->
+      <!--          </button>-->
+      <!--        </div>-->
+      <div class="modal-body" id="body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+          <!--            <div class="field">-->
+          <%#= f.label :name %>
+          <%#= f.text_field :name %>
+          <!--              <p id="name" class="error"></p>-->
+          <!--            </div>-->
 
-            <div class="field form-group text-left">
-              <%= field_set_tag 'Name*' do %>
-                <%= f.text_field :name, class: "form-control border-0" %>
-              <% end %>
-              <p id="name" class="error"></p>
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Name*' do %>
+              <%= f.text_field :name, class: "form-control border-0" %>
+            <% end %>
+            <p id="name" class="error"></p>
+          </div>
+
+          <!--            <div class="field">-->
+          <%#= f.file_field :profile_pic, class:"custom-file-input", id:"inputGroupFile01" %>
+          <!--            </div>-->
+
+          <div class="input-group">
+            <div class="custom-file">
+              <%= f.file_field :profile_pic, class: "file custom-file-input", id: "inputGroupFile01" %>
+              <label class="custom-file-label" for="inputGroupFile01" style="top: 45px; right: 35%;">Upload your Profile Picture</label>
             </div>
-
-<!--            <div class="field">-->
-              <%#= f.file_field :profile_pic, class:"custom-file-input", id:"inputGroupFile01" %>
-<!--            </div>-->
-
-            <div class="input-group">
-              <div class="custom-file">
-                <%= f.file_field :profile_pic, class:"file custom-file-input", id:"inputGroupFile01" %>
-                <label class="custom-file-label" for="inputGroupFile01">Upload your Profile Picture</label>
-              </div>
-            </div>
-             <div class="custom-file w-50 mt-2 d-inline-block" >
+          </div>
+          <div class="custom-file w-50 mt-2 d-inline-block">
             <div class="upload-preview">
-            <img style="width:100px;margin-top:50px" />
-              </div>
-              </div>
+              <%= image_tag 'neutral.png', class: "signup-preview" %>
+            </div>
+          </div>
 
 
-<!--            <div class="field">-->
-              <%#= f.label :email %>
-              <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
-<!--              <p id="email" class="error"></p>-->
-<!--            </div>-->
+          <!--            <div class="field">-->
+          <%#= f.label :email %>
+          <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <!--              <p id="email" class="error"></p>-->
+          <!--            </div>-->
 
-            <div class="field form-group text-left">
-              <%= field_set_tag 'Email*' do %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0" %>
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Email*' do %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0" %>
+            <% end %>
+            <p id="email" class="error"></p>
+          </div>
+
+          <!--            <div class="field">-->
+          <%#= f.label :dob %>
+          <%#= f.date_field :dob %>
+          <!--               <p id="dob" class="error"></p>-->
+          <!--            </div>-->
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Birth*' do %>
+              <%= f.date_field :dob, class: "form-control border-0" %>
+            <% end %>
+            <p id="dob" class="error"></p>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <%= f.label :gender, class: "form-check-label" do %>
+              <%= f.radio_button :gender, "male", class: "form-check-input", checked: true %> Male
+            <% end %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.label :gender, class: "form-check-label" do %>
+              <%= f.radio_button :gender, "female", class: "form-check-input" %> Female
+            <% end %>
+          </div>
+
+          <!--            <div class="field">-->
+          <%#= f.label :password %>
+          <%# if @minimum_password_length %>
+          <!--                <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
+          <%# end %>
+          <%#= f.password_field :password, autocomplete: "new-password" %>
+          <!--               <p id="password" class="error"></p>-->
+          <!--            </div>-->
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Password*' do %>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %>
-              <p id="email" class="error"></p>
-            </div>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-0" %>
+            <% end %>
+            <p id="password" class="error"></p>
+          </div>
 
-<!--            <div class="field">-->
-              <%#= f.label :dob %>
-              <%#= f.date_field :dob %>
-<!--               <p id="dob" class="error"></p>-->
-<!--            </div>-->
+          <!--            <div class="field">-->
+          <%#= f.label :password_confirmation %>
+          <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <!--               <p id="password_confirmation" class="error"></p>-->
+          <!--            </div>-->
 
-            <div class="field form-group text-left">
-              <%= field_set_tag 'Birth*' do %>
-                <%= f.date_field :dob, class: "form-control border-0" %>
-              <% end %>
-              <p id="dob" class="error"></p>
-            </div>
-           
-         <div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-  <label class="form-check-label" for="exampleRadios1">
-    Default radio
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-  <label class="form-check-label" for="exampleRadios2">
-    Second default radio
-  </label>
-</div>
-
-<!--            <div class="field">-->
-              <%#= f.label :password %>
-              <%# if @minimum_password_length %>
-<!--                <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
-              <%# end %>
-              <%#= f.password_field :password, autocomplete: "new-password" %>
-<!--               <p id="password" class="error"></p>-->
-<!--            </div>-->
-
-            <div class="field form-group text-left">
-              <%= field_set_tag 'Password*' do %>
-                <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %>
-                <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-0" %>
-              <% end %>
-              <p id="password" class="error"></p>
-            </div>
-
-<!--            <div class="field">-->
-              <%#= f.label :password_confirmation %>
-              <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
-<!--               <p id="password_confirmation" class="error"></p>-->
-<!--            </div>-->
-
-            <div class="field form-group text-left">
-              <%= field_set_tag 'Confirm*' do %>
-                <%= f.password_field :password_confirmation, class: "form-control border-0" %>
-              <% end %>
-              <p id="password_confirmation" class="error"></p>
-            </div>
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Confirm*' do %>
+              <%= f.password_field :password_confirmation, class: "form-control border-0" %>
+            <% end %>
+            <p id="password_confirmation" class="error"></p>
+          </div>
 
 
-
-            <div class="actions" id="sub">
-              <%= f.submit "Sign up", class:"btn btn-primary btn-block" %>
-            </div>
-          <% end %>
-        </div>
+          <div class="actions" id="sub">
+            <%= f.submit "Sign up", class: "btn btn-primary btn-block" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 
 
 
@@ -154,20 +151,20 @@
   <% end %>
 <% end %>
 <script>
-$(document).ready(function(){
-    var preview = $(".upload-preview img");
+    $(document).ready(function () {
+        var preview = $(".upload-preview img");
 
-    $(".file").change(function(event){
-       var input = $(event.currentTarget);
-       var file = input[0].files[0];
-       var reader = new FileReader();
-       reader.onload = function(e){
-           image_base64 = e.target.result;
-           preview.attr("src", image_base64);
-       };
-      
-       reader.readAsDataURL(file);
-       
+        $(".file").change(function (event) {
+            var input = $(event.currentTarget);
+            var file = input[0].files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                image_base64 = e.target.result;
+                preview.attr("src", image_base64);
+            };
+
+            reader.readAsDataURL(file);
+
+        });
     });
-});
 </script>

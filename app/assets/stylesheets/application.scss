@@ -15,6 +15,16 @@
  */
 @import "bootstrap";
 @import 'font_awesome5_webfont';
+
+.jumbotron {
+  background-color: #fff;
+  padding: 25px !important;
+  margin: 25px;
+}
+
+small {
+  color: #acabab;
+}
 .logo-cloud {
   width: 100vw;
   height: 40vh;
@@ -82,6 +92,14 @@ input + .error {
   text-align: left;
 }
 
+.signup-preview {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  top: -50px;
+  right: -80px;
+}
+
 @media only screen and (max-width: 1300px) {
   .logo-cloud {
     height: 35vh;
@@ -115,5 +133,27 @@ input + .error {
     position: absolute;
     left: 7.5%;
     box-shadow: 0 0 25px grey;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .min-hidden {
+    display: none;
+  }
+  .mid-portion {
+    width: 70%;
+    float: left;
+    padding-right: 10px;
+  }
+  .stories {
+    margin-top: 25px;
+    width: calc(30% - 35px);
+    height: 100vh;
+    background-color: #fff;
+    float: left;
+    margin-right: 35px;
+  }
+  .sidebar {
+    margin-top: 0px;
   }
 }

@@ -1,33 +1,53 @@
 <% @all_posts.each do |p| %>
   <div class="jumbotron">
-      <div class="profile-image d-inline"><%= image_tag is_post_creator_image(p).profile_pic, class: 'm-auto' %></div>
-    <%= is_post_creator_name(p) %>
-    <small>
+    <div class="pic-name-date">
+      <div class="profile-image d-inline float-left">
+        <%= image_tag is_post_creator_image(p).profile_pic, class: 'm-auto' %>
+      </div>
+      <div class="post-text d-inline float-left ml-3" style="width: 92%">
+        <%= is_post_creator_name(p) %>
 
-      <%= p.created_at.strftime("%I:%M %p, %b %d '%y") %>
-    </small>
-    <br>
-    <%= p.content %>
-    <% if post_owner?(p) %>
-    <%= link_to 'Delete post',post_path(p),method: :delete %>
-    <% end %>
-    <br>
+        <% if post_owner?(p) %>
+          <%= link_to fa_icon("trash"), post_path(p), method: :delete, class: "float-right" %>
+        <% end %>
+        <small class="d-block">
+          <%= p.created_at.strftime("%I:%M %p, %b %d '%y") %>
+        </small>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="content text-clr">
+      <%= p.content unless p.content.empty? %>
+    </div>
+
     <% p.post_pic.each do |y| %>
       <%= image_tag y.variant(resize: "100x100!") %>
     <% end %>
-    <br> <br>
-    <%= render 'reactions/like', p: p %>
-    <div class="d-inline-block">
-      <%= likes_counter(p) %>
-    </div>
-    <div class="d-inline-block">
-      <%= dislikes_counter(p) %>
-    </div>
-    <%= render 'reactions/dislike', p: p %>
 
+    <div class="reactions">
+      <%= render 'reactions/like', p: p %>
+      <div class="d-inline-block">
+        <%= likes_counter(p) %>
+      </div>
+      <div class="d-inline-block">
+        <%= dislikes_counter(p) %>
+      </div>
+      <%= render 'reactions/dislike', p: p %>
+    </div>
+
+    <div class="comment-size">
     <%= render p.comments %>
-      <div class="profile-image d-inline"><%= image_tag current_user.profile_pic, class: 'm-auto' %></div>
-    <%= render 'comments/new', post_id: p %>
+    </div>
+
+    <div class="new-comment d-flex">
+      <div class="comment-image d-inline-block">
+        <%= image_tag current_user.profile_pic, class: 'm-auto' %>
+      </div>
+      <div class="d-inline-block w-100">
+      <%= render 'comments/new', post_id: p %>
+      </div>
+    </div>
 
   </div>
 <% end %>
