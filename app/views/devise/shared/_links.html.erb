@@ -12,19 +12,9 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <!--        <div class="modal-header">-->
-      <!--          <h5 class="modal-title" id="exampleModalCenterTitle">Sign up</h5>-->
-      <!--          <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-      <!--            <span aria-hidden="true">&times;</span>-->
-      <!--          </button>-->
-      <!--        </div>-->
+    
       <div class="modal-body" id="body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
-          <!--            <div class="field">-->
-          <%#= f.label :name %>
-          <%#= f.text_field :name %>
-          <!--              <p id="name" class="error"></p>-->
-          <!--            </div>-->
 
           <div class="field form-group text-left">
             <%= field_set_tag 'Name*' do %>
@@ -50,24 +40,12 @@
           </div>
 
 
-          <!--            <div class="field">-->
-          <%#= f.label :email %>
-          <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          <!--              <p id="email" class="error"></p>-->
-          <!--            </div>-->
-
           <div class="field form-group text-left">
             <%= field_set_tag 'Email*' do %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0" %>
             <% end %>
             <p id="email" class="error"></p>
           </div>
-
-          <!--            <div class="field">-->
-          <%#= f.label :dob %>
-          <%#= f.date_field :dob %>
-          <!--               <p id="dob" class="error"></p>-->
-          <!--            </div>-->
 
           <div class="field form-group text-left">
             <%= field_set_tag 'Birth*' do %>

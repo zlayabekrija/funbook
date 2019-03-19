@@ -1,40 +1,98 @@
-<%= @user.name %>
+
+<!-- header start -->
+<nav class="container mt-2">
+  <div class="profile-details my-2 d-flex">
+    <div class="w-25 p-1 m-0">
+      <%= image_tag @user.profile_pic ,style:'width:50%; border-radius:50%' %>
+    </div>
+  <div class="w-75">
+    <div class="mt-2">
+      <h3 class="w-75 float-left"><%= @user.name %></h3>
+      <% if current_user == @user %>
+        <%= link_to fa_icon('wrench'),edit_user_path(@user),class:'float-left mt-2' %>
+      <% end %>
+      <div class="w-100 float-left">
+        <p>Some status.......</p>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<!-- header end -->
+
+</div>
+  <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Posts</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Information</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Photos</a>
+  </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  <div class="w-100 d-flex align-items-center justify-content-center" style="height:20vh;overflow-x:hidden">
+    <% @user_photos.each do |image| %>
+    <%= image_tag image,style:'width:100px;height:100px;border-radius:5px',class:'mx-1' %>
+    <% end %>
+</div>
+  <% my_posts(@user).each do |p| %>
+  <div class="jumbotron">
+    <div class="pic-name-date">
+      <div class="profile-image d-inline float-left">
+        <%= image_tag is_post_creator_image(p).profile_pic, class: 'm-auto' %>
+      </div>
+      <div class="post-text d-inline float-left ml-3" style="width: 92%">
+        <%= is_post_creator_name(p) %>
+
+        <% if post_owner?(p) %>
+          <%= link_to fa_icon("trash"), post_path(p), method: :delete, class: "float-right" %>
+        <% end %>
+        <small class="d-block">
+          <%= p.created_at.strftime("%I:%M %p, %b %d '%y") %>
+        </small>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="content text-clr">
+      <%= p.content unless p.content.empty? %>
+    </div>
+
+    <% p.post_pic.each do |y| %>
+      <%= image_tag y.variant(resize: "100x100!") %>
+    <% end %>
+
+    <div class="reactions">
+      <%= render 'reactions/like', p: p %>
+      <div class="d-inline-block">
+        <%= likes_counter(p) %>
+      </div>
+      <div class="d-inline-block">
+        <%= dislikes_counter(p) %>
+      </div>
+      <%= render 'reactions/dislike', p: p %>
+    </div>
+
+    <div class="comment-size">
+    <%= render p.comments %>
+    </div>
+
+    <div class="new-comment d-flex">
+      <div class="comment-image d-inline-block">
+        <%= image_tag current_user.profile_pic, class: 'm-auto' %>
+      </div>
+      <div class="d-inline-block w-100">
+      <%= render 'comments/new', post_id: p %>
+      </div>
+    </div>
+
+  </div>
+<% end %></div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><%= @user.name %>
 <%= @user.dob %>
 <%= @user.email %>
 <%= image_tag @user.profile_pic ,style:'width:5%; border-radius:50%' %>
 <% if current_user == @user %>
 <%= link_to 'Edit',edit_user_path(@user) %>
-<% end %>
-<% my_posts(@user).each do |p| %>
-  <div class="jumbotron">
-      <div class="profile-image d-inline"><%= image_tag is_post_creator_image(p).profile_pic, class: 'm-auto' %></div>
-    <%= is_post_creator_name(p) %>
-    <small>
-
-      <%= p.created_at.strftime("%I:%M %p, %b %d '%y") %>
-    </small>
-    <br>
-    <%= p.content %>
-    <% if post_owner?(p) %>
-    <%= link_to 'Delete post',post_path(p),method: :delete %>
-    <% end %>
-    <br>
-    <% p.post_pic.each do |y| %>
-      <%= image_tag y.variant(resize: "100x100!") %>
-    <% end %>
-    <br> <br>
-    <%= render 'reactions/like', p: p %>
-    <div class="d-inline-block">
-      <%= likes_counter(p) %>
-    </div>
-    <div class="d-inline-block">
-      <%= dislikes_counter(p) %>
-    </div>
-    <%= render 'reactions/dislike', p: p %>
-
-    <%= render p.comments %>
-    <div class="profile-image d-inline"><%= image_tag current_user.profile_pic, class: 'm-auto' %></div>
-    <%= render 'comments/new', post_id: p %>
-
-  </div>
-<% end %>
+<% end %></div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>

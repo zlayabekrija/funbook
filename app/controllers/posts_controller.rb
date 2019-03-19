@@ -31,13 +31,5 @@ class PostsController < ApplicationController
   def post_params
     params.permit(:content, post_pic: [])
   end
-  def stay_on_same_path
-    prev = Rails.application.routes.recognize_path(request.referrer)
-    if prev[:controller] == "posts"
-        redirect_to timeline_path
-    else
-      redirect_to user_path(@user)
-    end
-  end
 end
 

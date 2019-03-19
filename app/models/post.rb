@@ -15,7 +15,7 @@ class Post < ApplicationRecord
   end
   
   def self.myPosts user 
-    Post.where(user_id: user.id)
+    Post.where(user_id: user.id).order(created_at: :desc)
   end
 
   protected

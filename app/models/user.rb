@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_one_attached :profile_pic
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts, dependent: :destroy
-  has_many :friends, dependent: :destroy # to do
+  has_many :friends, dependent: :destroy 
   has_many :reactions, through: :posts, dependent: :destroy
   has_many :reactions, through: :comments, dependent: :destroy
   # Include default devise modules. Others available are:
@@ -57,10 +57,12 @@ class User < ApplicationRecord
   def default_image
     if !self.profile_pic.attached?
       if self.gender == 'male'
-      self.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "male.png")), filename: 'male.png' , content_type: "image/jpg")
-      else
+        self.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "male.png")), filename: 'male.png' , content_type: "image/jpg")
+      elsif self.gender == 'female'
         self.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "female.png")), filename: 'female.png' , content_type: "image/jpg")
-      end
+      else
+        self.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "neutral.png")), filename: 'neutral.png' , content_type: "image/jpg")
+    end
     end
   end
 

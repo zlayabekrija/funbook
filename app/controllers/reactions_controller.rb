@@ -1,8 +1,6 @@
 class ReactionsController < ApplicationController
   before_action :check_if_liked, only: [:create]
   before_action :check_if_disliked, only: [:create]
-  # before_action :toggle_like_to_dislike, only: [:create]
-  # before_action :toggle_dislike_to_like, only: [:create]
   def new
   end
 

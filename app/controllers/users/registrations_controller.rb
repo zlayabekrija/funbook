@@ -31,7 +31,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      # respond_with resource
       respond_to do |format|
         format.js { render 'devise/shared/errors_signup' }
       end

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'friends/new'
   get 'reactions/new'
   get 'comments/new'
-  # get 'posts/new'
   get 'timeline', to: 'posts#timeline'
   post 'timeline', to: 'posts#create'
   post 'like', to: 'reactions#create'

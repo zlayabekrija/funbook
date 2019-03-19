@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Friend, type: :model do
-  it 'should have friend' do
-    u = User.first
-    f = u.friends.build()
-    expect(f).to be_invalid
+    before(:all) do
+        @friend = build(:friend)
+    end
+    it 'should have friend' do
+    expect(@friend).to be_invalid
   end
   it 'should not self request' do
-    u = User.first
-    f = u.friends.build(friend_uid: u.id)
-    expect(f).to be_invalid
+    friend = build(:friend,friend_uid: @friend.id)
+    expect(friend).to be_invalid
   end
 end
