@@ -23,10 +23,6 @@
             <p id="name" class="error"></p>
           </div>
 
-          <!--            <div class="field">-->
-          <%#= f.file_field :profile_pic, class:"custom-file-input", id:"inputGroupFile01" %>
-          <!--            </div>-->
-
           <div class="input-group">
             <div class="custom-file">
               <%= f.file_field :profile_pic, class: "file custom-file-input", id: "inputGroupFile01" %>
@@ -65,15 +61,6 @@
             <% end %>
           </div>
 
-          <!--            <div class="field">-->
-          <%#= f.label :password %>
-          <%# if @minimum_password_length %>
-          <!--                <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
-          <%# end %>
-          <%#= f.password_field :password, autocomplete: "new-password" %>
-          <!--               <p id="password" class="error"></p>-->
-          <!--            </div>-->
-
           <div class="field form-group text-left">
             <%= field_set_tag 'Password*' do %>
               <% if @minimum_password_length %>
@@ -84,12 +71,6 @@
             <p id="password" class="error"></p>
           </div>
 
-          <!--            <div class="field">-->
-          <%#= f.label :password_confirmation %>
-          <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          <!--               <p id="password_confirmation" class="error"></p>-->
-          <!--            </div>-->
-
           <div class="field form-group text-left">
             <%= field_set_tag 'Confirm*' do %>
               <%= f.password_field :password_confirmation, class: "form-control border-0" %>
@@ -99,7 +80,7 @@
 
 
           <div class="actions" id="sub">
-            <%= f.submit "Sign up", class: "btn btn-primary btn-block" %>
+            <%= f.submit "Sign up", class: "btn btn-primary btn-block", id:'signitup' %>
           </div>
         <% end %>
       </div>
