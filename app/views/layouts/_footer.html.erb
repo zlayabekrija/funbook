@@ -1,0 +1,66 @@
+<div class="float-left px-2 w-25 alignment">
+  <div class="w-30 float-left">
+    <%= link_to user_path(current_user) do %>
+    <div class="d-flex footer-profile-image"><%= image_tag current_user.profile_pic, class: 'm-auto' %></div>
+      <% end %>
+  </div>
+  <div class="w-80 float-right pl-2">
+    <p class="text-white m-0 mt-1"><%= link_to current_user.name.capitalize,user_path(current_user) %> </p>
+    <small class="tagline">No status....</small>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="w-75 text-center float-left footer-central alignment">
+  <div class="w-50 float-left">
+    <div class="dropdown">
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Path 85', class: "dropdown-toggle", data_toggle: "dropdown" %>
+         <span class="badge badge-pill badge-danger float-right"><%= notifications_count if notifications_count > 0 %></span>
+      </button>
+      <div class="dropdown-menu">
+        <% notification_user.each do |friend| %>
+        <h5><%= friend.name.capitalize %> sent friend request </h5>
+        <small><%=distance_of_time_in_words(Time.now,notification_time(friend)) %> ago</small>
+         <%= link_to 'Accept',friend_path(friend),method: :patch %>
+        <%= link_to 'Cancel',friend_path(friend),method: :delete %>
+        <% end %>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Group 958', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Path 90', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+      <h5>some text</h5>
+      <a class="dropdown-item" href="#">Link 1</a>
+       <%= link_to 'Profile', user_path(current_user),class:'dropdown-item' %>
+       <%= link_to 'Logout', destroy_user_session_path,class:'dropdown-item' %>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Path 83', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+      <button type="button" data-toggle="dropdown" class="btn btn-outline-light border-0">
+        <%= image_tag 'Group 45', class: "dropdown-toggle", data_toggle: "dropdown" %>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </div>
+  </div>
+  <div class="w-50 float-left">
+    <p>Text</p>
+  </div>
+</div>

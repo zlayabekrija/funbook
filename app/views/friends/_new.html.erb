@@ -1,0 +1,4 @@
+ <%= form_with(model: friend, local: true) do |f| %>
+  <%= f.hidden_field :friend_uid, value: user.id %>
+ <%= f.submit "Add Friend" %>
+ <% end %>

@@ -1,0 +1,7 @@
+<%= form_with(model: p.reactions.build, url: like_path, class:"d-inline-block") do |r| %>
+  <%= r.hidden_field :user_id, value: current_user.id %>
+  <%= r.hidden_field :resource_id, value: p.id %>
+  <%= r.hidden_field :resource_type, value: "Post" %>
+  <%= r.hidden_field :like, value: true %>
+  <%= r.button fa_icon("thumbs-up"), class: "button my-button bg-transparent", id: "register-button" %>
+<% end %>

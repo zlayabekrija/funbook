@@ -1,0 +1,129 @@
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Log in", new_session_path(resource_name) %>
+<% end %>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+  Sign up
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-body" id="body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Name*' do %>
+              <%= f.text_field :name, class: "form-control border-0" %>
+            <% end %>
+            <p id="name" class="error"></p>
+          </div>
+
+          <div class="input-group">
+            <div class="custom-file">
+              <%= f.file_field :profile_pic, class: "file custom-file-input", id: "inputGroupFile01" %>
+              <label class="custom-file-label" for="inputGroupFile01" style="top: 45px; right: 35%;">Upload your Profile Picture</label>
+            </div>
+          </div>
+          <div class="custom-file w-50 mt-2 d-inline-block">
+            <div class="upload-preview">
+              <%= image_tag 'neutral.png', class: "signup-preview" %>
+            </div>
+          </div>
+
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Email*' do %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border-0" %>
+            <% end %>
+            <p id="email" class="error"></p>
+          </div>
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Birth*' do %>
+              <%= f.date_field :dob, class: "form-control border-0" %>
+            <% end %>
+            <p id="dob" class="error"></p>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <%= f.label :gender, class: "form-check-label" do %>
+              <%= f.radio_button :gender, "male", class: "form-check-input", checked: true %> Male
+            <% end %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.label :gender, class: "form-check-label" do %>
+              <%= f.radio_button :gender, "female", class: "form-check-input" %> Female
+            <% end %>
+          </div>
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Password*' do %>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control border-0" %>
+            <% end %>
+            <p id="password" class="error"></p>
+          </div>
+
+          <div class="field form-group text-left">
+            <%= field_set_tag 'Confirm*' do %>
+              <%= f.password_field :password_confirmation, class: "form-control border-0" %>
+            <% end %>
+            <p id="password_confirmation" class="error"></p>
+          </div>
+
+
+          <div class="actions" id="sub">
+            <%= f.submit "Sign up", class: "btn btn-primary btn-block", id:'signitup' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+<% end %>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+<% end %>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %>
+<% end %>
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %>
+  <% end %>
+<% end %>
+<script>
+    $(document).ready(function () {
+        var preview = $(".upload-preview img");
+
+        $(".file").change(function (event) {
+            var input = $(event.currentTarget);
+            var file = input[0].files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                image_base64 = e.target.result;
+                preview.attr("src", image_base64);
+            };
+
+            reader.readAsDataURL(file);
+
+        });
+    });
+</script>

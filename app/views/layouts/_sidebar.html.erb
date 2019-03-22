@@ -1,0 +1,27 @@
+<div class="main-sidebar">
+  <div class="sidebar-icons mt-3">
+    <%= image_tag 'logo.png', class: "logo-f" %>
+    <div class="sidebar-icons-menu mt-2">
+      <div class="menu">
+        <h6><strong class="text-color">Menu</strong></h6>
+        <ul class="side-menu">
+          <li class="text-color"><%= link_to timeline_path do %><%= image_tag 'noun_Newspaper_772219 (1).png', class: "icon"%> News<% end %></li>
+          <li class="text-color"><%= image_tag 'noun_message_2043227@2x.png', class: "icon"%> Messages <span class="badge badge-pill badge-danger float-right">8</span></li>
+          <li class="text-color"><%= link_to friends_path do %><%= image_tag 'noun_friends_1297819@2x.png', class: "icon"%>Friends<% end %></li>
+          <li class="text-color"><%= image_tag 'noun_event_1379383@2x.png', class: "icon"%> Events</li>
+          <li class="text-color"><%= image_tag 'Group 1119@2x.png', class: "icon"%> Communities</li>
+          <li class="text-color"><%= image_tag 'noun_pages_734946@2x.png', class: "icon"%> Pages</li>
+          <li class="text-color"><%= image_tag 'noun_Box_1276334@2x.png', class: "icon"%> Apps</li>
+        </ul>
+      </div>
+      <div class="shortcuts mt-1">
+        <h6><strong class="text-color">Authors</strong></h6>
+        <ul class="side-menu">
+          <li class="text-color"><%= image_tag 'octocat.png',class:'sidebar-icon' %><%= link_to 'Inzi',"https://github.com/inhaq",target:"_blank",style:"font-weight:500" %></li>
+          <li class="text-color"><%= image_tag 'octocat.png',class:'sidebar-icon' %><%= link_to 'Zlaya',"https://github.com/zlayabekrija",target:"_blank",style:"font-weight:500" %></li>
+        </ul>
+      </div>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </div>
+  </div>
+</div>

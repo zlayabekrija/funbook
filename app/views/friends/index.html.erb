@@ -1,0 +1,41 @@
+<h4>Your friends </h4>
+<% @friends.each do |friend| %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+    <%= link_to user_path(friend) do %>
+      <%= friend.name %>
+    <% end %>
+      <%= link_to 'Unfriend',friend_path(friend),method: :delete %>
+<% end %>
+<% @accepted.each do |friend| %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+  <%= link_to user_path(friend) do %>
+      <%= friend.name %>
+    <% end %>
+      <%= link_to 'Unfriend',friend_path(friend),method: :delete %>
+<% end %>
+<% if @pending.any? %>
+<h4> Pending requests </h4>
+<% @pending.each do |friend| %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+    <%= link_to user_path(friend) do %>
+      <%= friend.name %>
+    <% end %>
+       <%= link_to 'Accept',friend_path(friend),method: :patch %>
+        <%= link_to 'Cancel',friend_path(friend),method: :delete %>
+      <% end %>
+<% end %>
+<h4> Other Users </h4>
+<% @cancelrequest.each do |friend| %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+  <%= link_to user_path(friend) do %>
+    <%= friend.name %>
+  <% end %>
+     <%= link_to 'Cancel',friend_path(friend),method: :delete %>
+<% end %>
+<% @others.each do |friend| %>
+    <div class="d-flex footer-profile-image"><%= image_tag friend.profile_pic, class: 'm-auto' %></div>
+  <%= link_to user_path(friend) do %>
+    <%= friend.name %>
+  <% end %>
+     <%= render partial: 'new', locals: { friend: @friend,user:friend } %>
+<% end %>

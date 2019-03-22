@@ -1,0 +1,39 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.profile-image > img {
+  border-radius: 100%;
+  height: 40px;
+}
+
+.input {
+  font-size: 20px;
+  height:50px;
+}
+.imagediv {
+  float:left;
+  margin-top:50px;
+}
+.imagediv .showonhover {
+  background:red;
+  padding:20px;
+  opacity:0.9;
+  color:white;
+  width: 100%;
+  display:block;
+  text-align:center;
+  cursor:pointer;
+}
+
+.remove-focus:focus {
+  outline: none;
+}
+
+.content {
+  padding: 15px 0;
+}
+
+.text-clr {
+  color: #505151;
+  font-weight: 300;
+}

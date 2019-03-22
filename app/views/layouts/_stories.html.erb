@@ -1,0 +1,49 @@
+<% if controller_name == 'users'%>
+<div class="counts d-flex align-items-center justify-content-center text-primary p-2 text-center">
+    <div class="w-25">
+        <p class="mb-0"><%= @user.posts.count %></p>
+        <p class="w-100">Posts</p>
+    </div>
+    <div class="w-25">
+        <p class="mb-0"><%= @user.reactions.count %></p>
+        <p class="w-100">Reactions</p>
+    </div>
+    <div class="w-25">
+        <p class="mb-0"><%= @user.comments.count %></p>
+        <p class="w-100">Comments</p>
+    </div>
+    <div class="w-25">
+        <p class="mb-0"><%= @user.friends.count %>
+        <p class="w-100">Friends</p>
+    </div>
+</div>
+<div>
+    <div class="w-100">
+        <h5 class="float-left ml-3">About</h5>
+        <p class="float-right text-primary mr-3">More</p>
+          <div class="clearfix"></div>
+    </div>
+    <div class="w-100 text-left">
+    <p class="w-100 ml-3"><%= current_user.dob %>, <%= current_user.gender.capitalize %></p>
+    </div>
+  </div>
+  <% elsif controller_name == 'posts' %>
+  <div class="counts d-flex align-items-center justify-content-center text-primary p-2 text-center">
+    <div class="w-25">
+        <p class="mb-0"><%= current_user.posts.count %></p>
+        <p class="w-100">Posts</p>
+    </div>
+    <div class="w-25">
+        <p class="mb-0"><%= current_user.reactions.count %></p>
+        <p class="w-100">Reactions</p>
+    </div>
+    <div class="w-25">
+        <p class="mb-0"><%= current_user.comments.count %></p>
+        <p class="w-100">Comments</p>
+    </div>
+    <div class="w-25">
+        <p class="mb-0"><%= current_user.friends.count %>
+        <p class="w-100">Friends</p>
+    </div>
+</div>
+<% end %>

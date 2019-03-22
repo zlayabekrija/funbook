@@ -1,0 +1,27 @@
+<div class="comment">
+  <div class="comment-image d-inline">
+    <%= image_tag to_show_user_data(comment).profile_pic.variant(resize: "100x100!") %>
+  </div>
+  <div class="comment-block d-inline-block">
+
+    <div class="comment-owner">
+
+      <%= to_show_user_data(comment).name.capitalize %>
+    </div>
+    <div class="text-clr d-inline-block">
+      <%= comment.content %>
+    </div>
+    <div class="trash">
+      <% if comment_owner?(comment) %>
+        <%= link_to 'x', comment_path(comment), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+  <div class="comment-likes">
+    <%= render 'reactions/comment_like', comment: comment %>
+    <%= likes_counter(comment) %>
+    <%= dislikes_counter(comment) %>
+    <%= render 'reactions/comment_dislike', comment: comment %>
+  </div>
+</div>
+
