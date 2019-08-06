@@ -1,24 +1,35 @@
-# README
+# Funbook 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###### The facebook clone with basic functionalities built in Ruby on Rails by remote pair programming.
 
-Things you may want to cover:
 
-* Ruby version
+Basic functionality consist of :
 
-* System dependencies
+- Signin up user using form or omniauth
 
-* Configuration
+- Making and responding to friend requests 
 
-* Database creation
+- Posting the content (plain text or image or both)
 
-* Database initialization
+- Commenting and liking posts
 
-* How to run the test suite
+***Steps to run project locally***
 
-* Services (job queues, cache servers, search engines, etc.)
+- clone project with ```git clone```
 
-* Deployment instructions
+- install necesarry gems with ``bundle``` or ```bundle install```
 
-* ...
+- run migrations with ``` rails db:migrate```
+
+- run server with ```rails s``` or ``` rails server```
+
+
+Feel free to fork, comment, suggest...
+
+###### Authors: [Zlaya](https://github.com/zlayabekrija) and [inhaq](https://github.com/inhaq)
+
+
+
+
+
+
