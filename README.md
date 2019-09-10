@@ -6,6 +6,8 @@ The facebook-like application, that supports adding users, adding friends, posti
 
 ![Screen Shot](./app/assets/images/funbook.png)
 
+__Working version of app you can find on [Funbook](https://mighty-earth-63985.herokuapp.com/users/sign_in)__
+
 ***Steps to run project in development mode***
 
 - clone project with ```git clone```
