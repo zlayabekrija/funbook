@@ -1,19 +1,12 @@
 # Funbook 
 
-###### The facebook clone with basic functionalities built in Ruby on Rails by remote pair programming.
+> The facebook clone built in Ruby on Rails by remote pair programming.
 
+The facebook-like application, that supports adding users, adding friends, posting liking and commenting content.
 
-Basic functionality consist of :
+![Screen Shot](./app/assets/images/funbook.png)
 
-- Signin up user using form or omniauth
-
-- Making and responding to friend requests 
-
-- Posting the content (plain text or image or both)
-
-- Commenting and liking posts
-
-***Steps to run project locally***
+***Steps to run project in development mode***
 
 - clone project with ```git clone```
 
