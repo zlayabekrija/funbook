@@ -28,3 +28,4 @@
 .idea
 /.env
 /coverage
+Gemfile.lock
